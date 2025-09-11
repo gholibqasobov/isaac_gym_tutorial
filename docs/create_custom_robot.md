@@ -59,7 +59,7 @@ When modeling a robot in Fusion360, there are a few important rules to follow so
 
 In Fusion360, create a new sketch, and in Fusion360,
 
-1. Create the chassis of the robot:
+1. ### Create the chassis of the robot:
     - Start by creating a new sketch on the XY plane.
 
     - Draw a rectangle with dimensions 200 mm (length) × 100 mm (width).
@@ -72,7 +72,7 @@ In Fusion360, create a new sketch, and in Fusion360,
     - You now have the chassis box of the robot, measuring 200 × 100 × 40 mm
     ![Robot chassis sketch](/isaac_sim/data/base_link.png)
 
-2. Create Axles for wheel joints:
+2. ### Create Axles for wheel joints:
 
     - On the side face of the chassis, create a new sketch.
 
@@ -84,7 +84,7 @@ In Fusion360, create a new sketch, and in Fusion360,
     ![Wheel joint sketch](/isaac_sim/data/base_link_with_joints.png)
     ![Wheel joint sketch](/isaac_sim/data/base_link_up.png)
 
-3. Create the Wheels:
+3. ### Create the Wheels:
     - Select the front face of one axle and create a new sketch on it.
     - Draw a circle with a diameter of 80 mm. This will define the wheel’s outer edge.
     - Use the Extrude tool to pull the circle outward by 20 mm.
@@ -95,19 +95,19 @@ In Fusion360, create a new sketch, and in Fusion360,
     - After finishing you shou8ld have 5 separate bodies in your design
 
 
-4. Add Lidar: To make easier to track robot heading 
+4. ### Add Lidar: To make easier to track robot heading 
     - Select the top face of the chassis and create a new sketch.
     - Draw a circle with a radius of 25 mm (diameter = 50 mm).
     - Use the Extrude tool (E) to pull the circle upward by 20 mm.
     ![Lidar and wheel stripes](/isaac_sim/data/add_all_wheels.png)
 
-5. Add Wheel Stripes: To track wheel rotation in simulation
+5. ### Add Wheel Stripes: To track wheel rotation in simulation
     - Select the outer face of one wheel and create a new sketch.
     - Draw a thin box (for example: 6 mm wide × 10 mm tall × 3mm high) from the center of the wheel.
     - Repeat this process for each wheel.
     ![Lidar and wheel stripes](/isaac_sim/data/add_bars_to_wheels.png)
 
-6. Rename the Bodies
+6. ### Rename the Bodies
     - In the Browser panel (left-hand side of Fusion360), expand the Bodies folder.
 
     - Right-click on each body and rename it to something meaningful.
@@ -123,7 +123,7 @@ In Fusion360, create a new sketch, and in Fusion360,
 
         Body5 → rear_wheel_left
         ```
-7. Right-click on Bodies folder
+7. ### Right-click on Bodies folder
     - Select “Create Components from Bodies”.
     ![components ](/isaac_sim/data/renamed_components.png)
 
@@ -131,7 +131,7 @@ In Fusion360, create a new sketch, and in Fusion360,
 
 # Add revolute joints to robot
 
-1. Let's add revolute joints to each wheel, so that it was able to ratate
+1. ### Let's add revolute joints to each wheel, so that it was able to ratate
     - Press J on your keyboard to open the Joint tool. (English Keyboard).   Alternatively, you can access it from the Assemble → Joint menu.
 
     - Define the Joint for a Wheel
@@ -142,71 +142,78 @@ In Fusion360, create a new sketch, and in Fusion360,
         ```
 
     - In the Joint Type options, select Revolute.
-    ![add revolute joints ](/isaac_sim/data/rev_joint_add.mp4)
+    ![add revolute joints ](/isaac_sim/data/how_add_rev_joint.gif)
 
     -  Repeat for All Wheels
 
 
+2. ### Assign Materials to the Robot
+    - In the **Browser panel**, right-click on any component (e.g., `base_link`) and select **Physical Material**.  
+    - In the **Physical Material window**, drag and drop materials from the library onto the robot’s parts:  
+        - `base_link` → Metal (e.g., Aluminum or Steel)  
+        - Wheels → Rubber (or ABS Plastic for rims)  
+    - Repeat the process for all components until each has a defined material.  
+     ![add materials ](/isaac_sim/data/add_materials.png)
+
+
+
+
+---
+
+
 # Convert the design into **URDF format**
-
-
-# Prepare it for use in simulators such as **Isaac Sim** or **Gazebo**
-
-=============================
-
-
-
-
-
-
-5. Let's add revolute joints to each wheel, so that it was able to ratate
-    - Press "J" in your keyboard (works only in English keyboard)
-    - As Component 1 choose Inner Origin of Wheel, As Component 2, choose origine mode of body joint, Revolute, and save
-    - Repeat for all the wheels
-
-
-6. As a final step, we should define the materials for the robot:
-    - Right click on any component (base_link, as an example) -> Physical Material
-    - Add materials to wheels an chassis of the robot
-
-
-
 
 Now, As the robot is ready, let's install the fusion2 urdf add-in:
 
+## Install Fusion2URDF Add-In
 
-1. Open the following link:
-https://github.com/syuntoku14/fusion2urdf
+1. Go to the fusion2urdf GitHub page: [https://github.com/syuntoku14/fusion2urdf](https://github.com/syuntoku14/fusion2urdf) 
 
-and download it as zip file, unzip it
+2. Click the green **Code** button.  
 
-2. Installation
-Run the following commands in Your Shell
+3. In the dropdown, select **Download ZIP**
 
-Windows (in PowerShell)
+![download add-in ](/isaac_sim/data/download_addin.png)
 
-```
+
+### Step 8: Install fusion2urdf Add-in
+
+Run the following commands in your shell, depending on your operating system:  
+
+#### Windows (PowerShell)
+```powershell
 cd <path to fusion2urdf>
+
 Copy-Item ".\URDF_Exporter\" -Destination "${env:APPDATA}\Autodesk\Autodesk Fusion 360\API\Scripts\" -Recurse
 ```
 
-masOS (in bash or zsh)
-
-```
+#### macOS (bash or zsh)
+```powershell
 cd <path to fusion2urdf>
+
 cp -r ./URDF_Exporter "$HOME/Library/Application Support/Autodesk/Autodesk Fusion 360/API/Scripts/"
 ```
 
+---
+## Export Robot as URDF
+As you have installed the Fusion2URDF add-in: 
 
-In Fusion
-- Navigate to Utilities -> Add-Ins -> Scripts and Add-Ins
-- From the list, click URDF_Exporter, choose the directory, and save
-- You must the a message indicating the URDF was installed successfully
+1. In Fusion 360, go to **Utilities → Add-Ins → Scripts and Add-Ins**.  
+2. From the list, select **URDF_Exporter**.  
+3. Choose the export directory where you want to save your URDF files.  
+4. Save the settings.  
+5. You should see a confirmation message indicating that the URDF was installed successfully.  
+![download add-in ](/isaac_sim/data/use_addin.png)
 
-One last step,
+---
+# Prepare it for use in simulators such as **Isaac Sim** or **Gazebo**
 
-Navigate to the directory, where you saved the robot description
-- In urdf/ directory , change robot extionsion from .xacro  to .urdf
+One Last Step left:
 
+### Finalize the URDF
 
-Now, you are setup to import the robot to Isaac Sim
+1. Navigate to the directory where you saved the robot description.  
+2. Inside the **urdf/** folder, locate the exported file.  
+3. Change the file extension from **.xacro** to **.urdf**.  
+
+✅ Now your robot model is ready!
