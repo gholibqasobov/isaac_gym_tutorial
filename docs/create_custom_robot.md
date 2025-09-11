@@ -123,7 +123,8 @@ In Fusion360, create a new sketch, and in Fusion360,
 
         Body5 → rear_wheel_left
         ```
-7. ### Right-click on Bodies folder
+7. ### Create Components from Bodies 
+    - Right-click on Bodies folder
     - Select “Create Components from Bodies”.
     ![components ](/isaac_sim/data/renamed_components.png)
 
