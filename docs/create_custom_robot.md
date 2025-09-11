@@ -217,4 +217,6 @@ One Last Step left:
 2. Inside the **urdf/** folder, locate the exported file.  
 3. Change the file extension from **.xacro** to **.urdf**.  
 
-✅ Now your robot model is ready!
+---
+
+# ✅ Now your robot model is ready!
