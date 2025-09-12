@@ -92,7 +92,7 @@ In Fusion360, create a new sketch, and in Fusion360,
     - In the Extrude settings, set the operation to New Body (not Join). This ensures the wheel is treated as a separate part, which is required for URDF export. Finish the sketch
     - Repeat for remaining axles
     ![Wheels and chassis](/isaac_sim/data/bodies.png)
-    - After finishing you shou8ld have 5 separate bodies in your design
+    - After finishing you should have 5 separate bodies in your design
 
 
 4. ### Add Lidar: To make easier to track robot heading 
