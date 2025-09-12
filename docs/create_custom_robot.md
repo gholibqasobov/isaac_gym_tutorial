@@ -181,9 +181,8 @@ Now, As the robot is ready, let's install the fusion2urdf add-in:
 ![download add-in ](/isaac_sim/data/download_addin.png)
 
 
-### Step 8: Install fusion2urdf Add-in
-
-Run the following commands in your shell, depending on your operating system:  
+### Install fusion2urdf Add-in
+Unzip the downloaded package. Run the following commands in your shell, depending on your operating system:  
 
 #### Windows (PowerShell)
 ```powershell
