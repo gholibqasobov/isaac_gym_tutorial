@@ -158,6 +158,10 @@ In Fusion360, create a new sketch, and in Fusion360,
 
 
 
+## We have finished Modeling the Robot
+
+![overall model ](/isaac_sim/data/progress_video-custom_robot.gif)
+
 
 ---
 
