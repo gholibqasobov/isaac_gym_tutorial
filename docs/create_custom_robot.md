@@ -11,7 +11,7 @@ In this tutorial, you will:
 <!-- TOC -->
 * [Model a simple mobile robot in **Fusion360**](#model-a-simple-mobile-robot-in-fusion360)
 
-* [Convert the design into **URDF format**](#model-a-simple-mobile-robot-in-fusion360)
+* [Convert the design into **URDF format**](#convert-the-design-into-urdf-format)
 
 * [Prepare it for use in simulators such as **Isaac Sim** or **Gazebo**](#prepare-it-for-use-in-simulators-such-as-isaac-sim-or-gazebo)
  
@@ -168,7 +168,7 @@ In Fusion360, create a new sketch, and in Fusion360,
 
 # Convert the design into **URDF format**
 
-Now, As the robot is ready, let's install the fusion2 urdf add-in:
+Now, As the robot is ready, let's install the fusion2urdf add-in:
 
 ## Install Fusion2URDF Add-In
 
