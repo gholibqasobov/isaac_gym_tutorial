@@ -1,38 +1,3 @@
-Follow the following link, and install the latest version of isaac sim. (insert picture)
-https://docs.isaacsim.omniverse.nvidia.com/5.0.0/installation/download.html
-
-Download the latest version
-
-
-
-Create a new folder named isaacsim and unzip it there:
-
-```
-mkdir ~/isaacsim
-cd ~/Downloads
-unzip "isaac-sim-standalone-5.0.0-linux-x86_64.zip" -d ~/isaacsim
-```
-
-Install the isaac sim:
-
-```
-cd ~/isaacsim
-./post_install.sh
-```
-
-
-Open and Start the Isaac Sim. 
-
-```
-cd ~/isaacsim
-./isaac-sim.selector.sh
-```
-
-(Picture of isaac sim)
-
-
-========================================================================================
-
 # Installing and Launching Isaac Sim
 
 ## Introduction
@@ -74,10 +39,6 @@ By the end of this guide, you will have a fully operational Isaac Sim environmen
 
 
 
-
-
-
-=============================
 <br><br>
 # Install Isaac Sim in Linux
 
@@ -185,57 +146,117 @@ Now that you have successfully installed Isaac Sim, let’s run an example using
         ![start-isaac-sim](/isaac_sim/data/install_isaac_sim/wait_isaac_sim.png)
 
 
-## Install Fusion2URDF Add-In
+## Overview of Isaac Sim
+If the app was launched successfully, you should see the following:
 
-1. Go to the fusion2urdf GitHub page: [https://github.com/syuntoku14/fusion2urdf](https://github.com/syuntoku14/fusion2urdf) 
+![isaac-sim-overview](/isaac_sim/data/install_isaac_sim/isaac_sim_overview.png)
 
-2. Click the green **Code** button.  
+> You can learn more about Isaac Sim and how to use it by visiting the official documentation: https://docs.isaacsim.omniverse.nvidia.com/5.0.0/introduction/quickstart_isaacsim.html 
 
-3. In the dropdown, select **Download ZIP**
-
-![download add-in ](/isaac_sim/data/download_addin.png)
-
-
-### Step 8: Install fusion2urdf Add-in
-
-Run the following commands in your shell, depending on your operating system:  
-
-#### Windows (PowerShell)
-```powershell
-cd <path to fusion2urdf>
-
-Copy-Item ".\URDF_Exporter\" -Destination "${env:APPDATA}\Autodesk\Autodesk Fusion 360\API\Scripts\" -Recurse
-```
-
-#### macOS (powershell or zsh)
-```powershell
-cd <path to fusion2urdf>
-
-cp -r ./URDF_Exporter "$HOME/Library/Application Support/Autodesk/Autodesk Fusion 360/API/Scripts/"
-```
+In this tutorial we wil focus on using a differential drive robot from the library.
 
 ---
-## Export Robot as URDF
-As you have installed the Fusion2URDF add-in: 
+### 1. Accessing the Isaac Sim Asset Library
 
-1. In Fusion 360, go to **Utilities → Add-Ins → Scripts and Add-Ins**.  
-2. From the list, select **URDF_Exporter**.  
-3. Choose the export directory where you want to save your URDF files.  
-4. Save the settings.  
-5. You should see a confirmation message indicating that the URDF was installed successfully.  
-![download add-in ](/isaac_sim/data/use_addin.png)
+To use example robots and environments from the Isaac Sim library:
+
+1. On the **top-left toolbar**, go to `Window` → `Browsers` → click on **Isaac Sim Assets**.
+
+2. A panel titled **Isaac Sim Assets [Beta] - Terminal** will appear at the bottom of the screen.
+
+![library-assets](/isaac_sim/data/install_isaac_sim/import_library.png)
+
+This asset browser gives you access to a rich library of pre-built content including:
+
+- Robots
+- Environments
+- Sensors
+- Materials
+- And more
+
+
+### 2. Loading an Environment
+
+1. In the **Isaac Sim Assets [Beta]** panel, navigate to the `Environments` folder.
+
+2. Browse the list and choose an environment suitable for your robot (e.g., a simple warehouse or flat ground).
+
+3. Click on the environment asset to select it.
+
+4. Then click the **"Load as Reference"** button.
+
+![imoprt-env](/isaac_sim/data/install_isaac_sim/import_env.png)
+
+5. After environment was loaded, you might see a blurry image of the environment. 
+    - Navigate to Top-Left panel, and change from `RTX-Real-Time` to `RTX-Interactive (Path Tracing)`
+![imoprt-env](/isaac_sim/data/install_isaac_sim/resolve_blurry_image.png)
+
+
+
+### 3. Loading a Robot
+
+1. In the **Isaac Sim Assets [Beta]** panel, navigate to the `Robots` folder.
+
+2. Browse the list, choose a robot, and load as reference.
+    - In this tutorial, for sake of simplicity, choose 2-wheel differential drive robot. Ex: jetbot
+
+3. Then click the **"Load as Reference"** button.
+
+![imoprt-env](/isaac_sim/data/install_isaac_sim/load_robot.png)
+
+
+### 4. Teleoperating the Robot with Keyboard
+
+Now, as we have the robot loaded, let's operate it using keyboard
+
+![imoprt-env](/isaac_sim/data/install_isaac_sim/robot_preview.png)
+---
+1. First of all, if the robot has a camera fixed to it, hide it by
+    - click on the camera
+    - on the right panel, a tree of robot will expand
+    - clock on the `eye` sign besides the `jetbot_camera`
+    ![imoprt-env](/isaac_sim/data/install_isaac_sim/hide-camera.png)
+    - now, the camera should be invisible.
+    ![imoprt-env](/isaac_sim/data/install_isaac_sim/robot_preview_wt_camera.png)
+
 
 ---
-# Prepare it for use in simulators such as **Isaac Sim** or **Gazebo**
-
-One Last Step left:
-
-### Finalize the URDF
-
-1. Navigate to the directory where you saved the robot description.  
-2. Inside the **urdf/** folder, locate the exported file.  
-3. Change the file extension from **.xacro** to **.urdf**.  
+2. Let's run the simulation
+    - Click and drag the directional arrows to move the robot along the X, Y, or Z axes.
+    ![imoprt-env](/isaac_sim/data/install_isaac_sim/transform_robot.gif)
+    - Position the robot above the ground.
+    - Click `Play` Simulation to see the robot fall.
+    - Click `Stop` Simulation to end the simulation.
 
 ---
 
-# ✅ Now your robot model is ready!
+3. Add Differential-Drive Controller:
+    - On the **top-left toolbar**, go to `Tools` → `Robotics` → `OmniGraph Controllers` → click on `Differential Controller`.
+    ![imoprt-env](/isaac_sim/data/install_isaac_sim/add_diff_controller.png)
+    - As `Robot Prim`: `jetbot` (or your custom robot)
+    - `wheel radius`: 0.05 (in meters)
+    - `distance between wheels`: 0.1 (in meters)
+    - Tick `Use Keyboard Control (WASD)`: ticked
+    - Click `OK`
+    ![imoprt-env](/isaac_sim/data/install_isaac_sim/robot_diff_controller_graph.png)
+
+    - Now you can see a `differential_controller` graph appear in `Graphs` folder
+    - Open the graph to view. Right click on `differential_controller`, choose `Open Graph`
+     ![imoprt-env](/isaac_sim/data/install_isaac_sim/view_graph.png)
+    - Now you can view the graph that was created to control the robot using keyboard inputs.
+
+---
+
+4. Controlling Robot with Keyboard
+
+    Now you are ready to start operating your robot with keyboard. For this:
+    - Click `Play` Simulation see the robot fall.
+    - Use `W, A, S, D` Keys in Keyboard to control the robot.
+    - When you have finished, click `Stop` Simulation to end the simulation.
+
+    ![imoprt-env](/isaac_sim/data/install_isaac_sim/move_robot.gif)
+
+---
+
+
+# ✅ You are ready to go!
