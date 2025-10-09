@@ -260,3 +260,13 @@ Now, as we have the robot loaded, let's operate it using keyboard
 
 
 # ✅ You are ready to go!
+
+
+## Questions or Feedback?
+
+If you have any questions or notice anything in the tutorial that needs modification or updating, feel free to:
+* Open an issue on GitHub
+* Contact me directly
+
+If you find this tutorial useful, don’t forget to give the repo a ⭐ on GitHub. 
+Your feedback and support are always appreciated!
