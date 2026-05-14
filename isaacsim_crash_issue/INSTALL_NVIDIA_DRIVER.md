@@ -1,5 +1,13 @@
 # Install a Specific NVIDIA Driver Version (Ubuntu 22.04)
 
+## Isaac Sim Crash 
+
+A crash in Isaac Sim related to NVIDIA driver issues, you might see an error similar to the screenshot below:
+
+![Isaac Sim Crash Screenshot](./crashed_screenshot.png)
+
+This can help diagnose if your issue is driver-related. Follow the instructions below to resolve common driver problems.
+
 Pick a branch (`570`, `580`, `595`, ...) and a flavor:
 
 - **`-open`** → open kernel module. **Required for RTX 50-series (Blackwell).**
